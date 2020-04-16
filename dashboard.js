@@ -125,9 +125,9 @@ function paintToUI(myData) {
         let st = obj.startTime;
         let et = obj.endTime;
         let meetingLink = `https://global.gotomeeting.com/join/${meetingID}`;
-        str += `<tr> 
+        str += `<tr onclick="viewMeetingInfo('${meetingID}')"> 
         <td> ${subject} </td> 
-        <td onclick="viewMeetingInfo('${meetingID}')"> ${meetingID} </td>
+        <td > ${meetingID} </td>
         <td> ${pwdReq} </td>
         <td> ${meetingType} </td>
         <td> ${st} </td> 
