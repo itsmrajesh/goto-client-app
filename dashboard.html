@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>GoTo Dashboard</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">GoTo App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Meetings</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <form id="createMeetingFrom" class="mt-4 ml-2">
+                    <h4>New Meeting</h4>
+                    <div class="form-group">
+                        <label for="subject">Meeting Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" class="form-control" id="startDate" name="startDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="startTime">Start Time</label>
+                        <input type="time" class="form-control" id="startTime" name="startTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">EndDate</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">EndTime</label>
+                        <input type="time" class="form-control" id="endTime" name="endTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwdReq">Password Required</label>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" value="true" name="pwdReq"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" value="false" name="pwdReq"
+                                class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">No</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc">Conference Call Info</label>
+                        <input type="text" class="form-control" id="cc" name="cc" placeholder="like Free,PSTN">
+                    </div>
+                    <div class="form-group">
+                        <label for="meetingType">Meeting Type</label>
+                        <select class="custom-select" name="meetingType" id="meetingType">
+                            <option selected>Select Meeting Type</option>
+                            <option value="immediate">Immediate</option>
+                            <option value="recurring">Recurring</option>
+                            <option value="scheduled">Scheduled</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="okey">Co-organizer Keys</label>
+                        <input type="text" class="form-control" id="okey" name="okey" placeholder="Separate with , ">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="createMeeting">Create Meeting</button>
+                </form>
+            </div>
+            <div class="col-md-9">
+                <!-- <buttton class="btn btn-primary mt-4" id="createMeeting">Create Meeting</buttton> -->
+                <h3 class="text text-info">Your Upcoming Meetings</h3>
+                <div id="upcomingMeetings" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subject</th>
+                                <th scope="col">Meeting ID</th>
+                                <th scope="col">Password Required</th>
+                                <th scope="col">Meeting Type</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="dashboard.js"></script>
+
+</html>
