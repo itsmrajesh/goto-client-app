@@ -34,7 +34,7 @@ function getBody() {
     return formBody;
 }
 
-export let generateNewAccessToken = function () {
+let generateNewAccessToken = function () {
     alert("Hey")
     fetch('https://api.getgo.com/oauth/v2/token', {
         method: 'POST',

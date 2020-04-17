@@ -22,14 +22,21 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">My Meetings</a>
                 </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Setup</a>
+                </li>
+            </ul>
         </div>
+
     </nav>
 
 
@@ -40,7 +47,8 @@
                     <h4 class="text text-primary">New Meeting</h4>
                     <div class="form-group">
                         <label for="subject">Meeting Subject</label>
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject" required>
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="startDate">Start Date</label>
@@ -67,7 +75,7 @@
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline2" value="false" name="pwdReq"
-                                class="custom-control-input" required> 
+                                class="custom-control-input" required>
                             <label class="custom-control-label" for="customRadioInline2">No</label>
                         </div>
                     </div>
@@ -87,7 +95,8 @@
 
                     <div class="form-group mt-2">
                         <label for="okey">Co-organizer Keys</label>
-                        <input type="text" class="form-control" id="okey" name="okey" placeholder="Optional if any Separate with , ">
+                        <input type="text" class="form-control" id="okey" name="okey"
+                            placeholder="Optional if any Separate with , ">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="createMeeting">Create Meeting</button>
@@ -131,6 +140,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 
 <script src="dashboard.js"></script>
-<script type="module" src="./modules/newAccessToken.js"></script>
+<script src="modules/newAccessToken.js"></script>
 
 </html>
