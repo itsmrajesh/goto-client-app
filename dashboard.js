@@ -130,7 +130,7 @@ function paintToUI(myData) {
         let et = obj.endTime;
         let meetingLink = `https://global.gotomeeting.com/join/${meetingID}`;
         str += `<tr> 
-        <td> ${subject} </td> 
+        <td onclick="startMeetingByID('${meetingID}')"> ${subject} <i class="fa fa-play-circle"></i></td> 
         <td onclick="viewMeetingInfo('${meetingID}')"s> ${meetingID} <i class="fa fa-info-circle" style="color:blue"></i></td>
         <td> ${pwdReq} </td>
         <td> ${meetingType} </td>
@@ -199,5 +199,30 @@ function deleteMeetingByID(id) {
         }).catch(error => {
             getUpcomingMeetings();
         })
+    }
+}
+
+function startMeetingByID(id) {
+    let status = confirm(`Do you like to start meeting with ID ${id}`);
+    if (status) {
+        fetch(`${base_url}/meetings/${id}/start`, {
+            method: 'GET',
+            headers: {
+                'accept': 'application/json',
+                'Authorization': getAccessToken()
+            },
+        }).then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                let hostURL = data.hostURL;
+                if (hostURL && hostURL !== '') {
+                    window.open(hostURL, '_blank');
+                }else{
+                    alert("Not able start meeting")
+                }
+            })
+            .catch((error) => {
+                console.log('Error', error);
+            })
     }
 }
