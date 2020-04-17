@@ -16,10 +16,10 @@ function getHeaders() {
 }
 
 function getBody() {
-    let code = localStorage.getItem('refreshToken');
+    let refresh_token = localStorage.getItem('refreshToken');
     let body = {
         'grant_type': 'refresh_token',
-        'code': code
+        'refresh_token': refresh_token
     }
 
     let formBody = [];
@@ -35,19 +35,20 @@ function getBody() {
 }
 
 export let generateNewAccessToken = function () {
+    alert("Hey")
     fetch('https://api.getgo.com/oauth/v2/token', {
         method: 'POST',
         headers: getHeaders(),
-        body: getBody()
+        body: getBody(),
     })
         .then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
             let res = JSON.stringify(data);
             console.log(res);
-            localStorage.setItem('accessRes', res);
-            localStorage.setItem("refreshToken", res.refresh_token)
-            localStorage.setItem('accessToken', data.access_token);
+            // localStorage.setItem('accessRes', res);
+            // localStorage.setItem("refreshToken", data.refresh_token)
+            // localStorage.setItem('accessToken', data.access_token);
         })
         .catch((error) => {
             console.error('Error:', error);

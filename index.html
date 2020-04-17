@@ -24,34 +24,48 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Meeting</a>
+                    <a class="nav-link" href="#">My Meetings</a>
                 </li>
-                
+
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 mt-4">
-                <button id="tokenBtn" class="btn btn-primary">Get Authorization Code</button>
-                <!-- <button id="accessBtn" class="btn btn-primary">Get Access token</button> -->
-
+            <div class="col-md-7">
+                <h4 class="text text-info mt-4">App Setup Steps</h4>
+                <ol class="list-group mt-2 ml-2">
+                    <li>Login in to GoTo Delevoper Site <a href="https://goto-developer.logmeininc.com/user/me/apps" target="_blank">Click here</a></li>
+                    <li>Get Authorization Code  <a href="#" id="tokenBtn">Click here</a></li>
+                    <li>Copy the Authorization Code which is redirected URL after code={AuthorizationCode}</li>
+                    <li>Paste the copied code in right side textarea and click on Validate AuthCode Button</li>
+                    <li>If Authorization Code is valid then you will be redirected to your Dashboard</li>
+                </ol>
             </div>
-            <div class="col-md-4 mt-4">
+            <div class="col-md-5 mt-4">
                 <div id="textbox">
-                    <textarea name="authCode" id="authCode" cols="50" rows="10" placeholder="Paste Your Authorization code here"></textarea>
-                    <button id="authBtn" class="btn btn-info mt-2">Insert AuthCode</button>
+                    <textarea name="authCode" id="authCode" cols="50" rows="10"
+                        placeholder="Paste Your Authorization code here"></textarea>
+                    <button id="authBtn" class="btn btn-info mt-2">Validate AuthCode</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="main.js"></script>
 
 </body>

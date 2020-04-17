@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>GoTo Dashboard</title>
 </head>
 
@@ -39,47 +40,46 @@
                     <h4>New Meeting</h4>
                     <div class="form-group">
                         <label for="subject">Meeting Subject</label>
-                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject" required>
                     </div>
                     <div class="form-group">
                         <label for="startDate">Start Date</label>
-                        <input type="date" class="form-control" id="startDate" name="startDate">
+                        <input type="date" class="form-control" id="startDate" name="startDate" required>
                     </div>
                     <div class="form-group">
                         <label for="startTime">Start Time</label>
-                        <input type="time" class="form-control" id="startTime" name="startTime">
+                        <input type="time" class="form-control" id="startTime" name="startTime" required>
                     </div>
                     <div class="form-group">
-                        <label for="endDate">EndDate</label>
-                        <input type="date" class="form-control" id="endDate" name="endDate">
+                        <label for="endDate">End Date</label>
+                        <input type="date" class="form-control" id="endDate" name="endDate" required>
                     </div>
                     <div class="form-group">
-                        <label for="endTime">EndTime</label>
-                        <input type="time" class="form-control" id="endTime" name="endTime">
+                        <label for="endTime">End Time</label>
+                        <input type="time" class="form-control" id="endTime" name="endTime" required>
                     </div>
                     <div class="form-group">
                         <label for="pwdReq">Password Required</label>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" value="true" name="pwdReq"
-                                class="custom-control-input">
+                                class="custom-control-input" required>
                             <label class="custom-control-label" for="customRadioInline1">Yes</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline2" value="false" name="pwdReq"
-                                class="custom-control-input">
+                                class="custom-control-input" required> 
                             <label class="custom-control-label" for="customRadioInline2">No</label>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="cc">Conference Call Info</label>
-                        <input type="text" class="form-control" id="cc" name="cc" placeholder="like Free,PSTN">
+                        <input type="text" class="form-control" id="cc" name="cc" placeholder="like Free,PSTN" required>
                     </div>
                     <div class="form-group">
                         <label for="meetingType">Meeting Type</label>
-                        <select class="custom-select" name="meetingType" id="meetingType">
-                            <option selected>Select Meeting Type</option>
-                            <option value="immediate">Immediate</option>
+                        <select class="custom-select" name="meetingType" id="meetingType" required>
+                            <option selected value="immediate">Immediate</option>
                             <option value="recurring">Recurring</option>
                             <option value="scheduled">Scheduled</option>
                         </select>
@@ -87,7 +87,7 @@
 
                     <div class="form-group mt-2">
                         <label for="okey">Co-organizer Keys</label>
-                        <input type="text" class="form-control" id="okey" name="okey" placeholder="Separate with , ">
+                        <input type="text" class="form-control" id="okey" name="okey" placeholder="Optional if any Separate with , ">
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="createMeeting">Create Meeting</button>
@@ -118,6 +118,19 @@
     </div>
 </body>
 
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
+
 <script src="dashboard.js"></script>
+<script type="module" src="./modules/newAccessToken.js"></script>
 
 </html>

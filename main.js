@@ -76,15 +76,15 @@ function getAccessToken() {
                 let res = JSON.stringify(data);
                 console.log(res);
                 localStorage.setItem('accessRes', res);
-                localStorage.setItem("refreshToken", res.refresh_token)
+                localStorage.setItem("refreshToken", data.refresh_token)
                 localStorage.setItem('accessToken', data.access_token);
                 window.location.href = "dashboard.html";
             }
             else
-                alert("Try Again")
+                alert("Authorization code is invalid,Please try again")
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert("Try Again")
+            alert("Authorization code is invalid,Please try again")
         });
 }

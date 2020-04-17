@@ -1,3 +1,4 @@
+
 const base_url = 'https://api.getgo.com/G2M/rest';
 
 const previousMeetingBtn = document.querySelector("#previousMeeting");
@@ -19,7 +20,7 @@ create.addEventListener('click', (event) => {
     let coorganizerKeys = [];
 
     if (keys.length > 0 && keys.split(",").length >= 0) {
-       coorganizerKeys = keys.split(",");
+        coorganizerKeys = keys.split(",");
     }
 
 
@@ -83,6 +84,8 @@ function createMeeting(meetingObj) {
         .then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
+            getUpcomingMeetings();
+            alert("Meeting Created Successfully..");
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -95,7 +98,7 @@ function getUpcomingMeetings() {
         headers: {
             'accept': 'application/json',
             'Authorization': getAccessToken()
-        }
+        },
     })
         .then((response) => response.json())
         .then((data) => {
@@ -103,7 +106,8 @@ function getUpcomingMeetings() {
             try {
                 paintToUI(data)
             } catch (error) {
-
+                generateNewAccessToken();
+                getUpcomingMeetings();
             }
         })
         .catch((error) => {
@@ -125,16 +129,18 @@ function paintToUI(myData) {
         let st = obj.startTime;
         let et = obj.endTime;
         let meetingLink = `https://global.gotomeeting.com/join/${meetingID}`;
-        str += `<tr onclick="viewMeetingInfo('${meetingID}')"> 
+        str += `<tr> 
         <td> ${subject} </td> 
-        <td > ${meetingID} </td>
+        <td onclick="viewMeetingInfo('${meetingID}')"s> ${meetingID} <i class="fa fa-info-circle" style="color:blue"></i></td>
         <td> ${pwdReq} </td>
         <td> ${meetingType} </td>
         <td> ${st} </td> 
         <td> ${et} </td>
-        <td> <button class="btn btn-info btn-sm" onclick = "copyURL('${meetingLink}')" > Copy URL</button> </td>
+        <td> <i class="fa fa-trash" style="font-size:25px;color:red" onclick="deleteMeetingByID('${meetingID}')"></i> </td>
         </tr>`;
     })
+
+    //<button class="btn btn-info btn-sm" onclick = "copyURL('${meetingLink}')" > Copy URL</button>
 
     document.querySelector("#tBody").innerHTML = str;
 
@@ -176,4 +182,22 @@ function getDate(date, time) {
         arr.push(ele);
     })
     return arr;
+}
+
+function deleteMeetingByID(id) {
+    let status = confirm(`Are you sure to delete this meeting with ID ${id}`);
+    if (status) {
+        fetch(`${base_url}/meetings/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'accept': 'application/json',
+                'Authorization': getAccessToken()
+            },
+        }).then(res => {
+            alert("Meeting Deleted successfully")
+            getUpcomingMeetings();
+        }).catch(error => {
+            getUpcomingMeetings();
+        })
+    }
 }

@@ -18,6 +18,8 @@ function showMeetingInfo() {
             try {
                 paintToUI(data)
             } catch (error) {
+                alert("No Attendees Info available")
+                window.location="dashboard.html";
             }
         })
         .catch((error) => {
