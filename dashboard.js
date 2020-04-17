@@ -52,8 +52,8 @@ create.addEventListener('click', (event) => {
     }
 
     console.log(meetingObj);
-    meetingForm.reset();
     createMeeting(meetingObj);
+    meetingForm.reset();
 
 })
 
@@ -68,8 +68,9 @@ function getAccessToken() {
 
 function getHeaders() {
     const header = new Headers();
-    header.append('Accept', 'application/json');
-    header.append("Authorization", `${getAccessToken()}`);
+    let accessToken = getAccessToken();
+    header.append('accept', 'application/json');
+    header.append('Authorization', accessToken);
     header.append('Content-Type', 'application/json');
     return header;
 }
@@ -78,7 +79,11 @@ function getHeaders() {
 function createMeeting(meetingObj) {
     fetch(`${base_url}/meetings`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: {
+            'accept': 'application/json',
+            'Authorization': getAccessToken(),
+            'Content-Type':'application/json'
+        },
         body: JSON.stringify(meetingObj),
     })
         .then((response) => response.json())
@@ -215,8 +220,10 @@ function startMeetingByID(id) {
             .then((data) => {
                 console.log(data)
                 let hostURL = data.hostURL;
+                console.log(hostURL);
+                
                 if (hostURL && hostURL !== '') {
-                    window.open(hostURL, '_blank');
+                    //window.open(hostURL, '_blank');
                 }else{
                     alert("Not able start meeting")
                 }
